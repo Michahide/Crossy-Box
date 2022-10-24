@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject grass;
     [SerializeField] GameObject road;
-    [SerializeField] int extent;
+    [SerializeField] int extent = 5;
     [SerializeField] int frontDistance = 10;
     //seberapa jauh player bisa ke belakang
     [SerializeField] int minZpos = -5;

@@ -11,10 +11,11 @@ public class CarSpawner : MonoBehaviour
 
     bool isRight;
 
-    float timer = 3;
+    float timer;
 
     private void Start() {
         isRight = Random.value > 0.5f ? true : false;
+        float timer = Random.Range(minSpawnDuration, maxSpawnDuration);
     }
     private void Update() {
         if (timer > 0)
@@ -26,12 +27,12 @@ public class CarSpawner : MonoBehaviour
         timer = Random.Range(minSpawnDuration, maxSpawnDuration);
         //kalau dia bergerak ke kanan, spawn nya di kiri, begitu sebaliknya
         var spawnPos = 
-            this.transform.position + Vector3.right * (isRight ? -(terrain.Extent + 1) : terrain.Extent + 1);
+            this.transform.position + Vector3.right * (isRight ? - (terrain.Extent + 1) : terrain.Extent + 1);
 
         var go = Instantiate(
             original: carPrefab,
             position: spawnPos,
-            //muter buat mobilnya biar gak gerak ke samping
+            //muter buat mobilnya biar menghadap ke kanan atau kiri
             rotation: Quaternion.Euler(0, isRight ? 90 : -90, 0),
             parent: this.transform
         );

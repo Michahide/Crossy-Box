@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5636342810435475567}
   - component: {fileID: -7249371006999234045}
+  - component: {fileID: 3519619597144662578}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -46,6 +47,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4a1c616d1e2e54abf3ec5ae52c7fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1.5
+--- !u!65 &3519619597144662578
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2655531810963514502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.44439155, z: 0.9094636}
+  m_Center: {x: 0, y: 0.22121891, z: -0.005658537}
 --- !u!1 &5833560263490337727
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +72,6 @@ GameObject:
   - component: {fileID: 5717740918327668165}
   - component: {fileID: 3252648232353997081}
   - component: {fileID: 1776068993576839958}
-  - component: {fileID: 6501496011077759439}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -130,19 +144,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6501496011077759439
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5833560263490337727}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6074479292229061592
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,9 +155,8 @@ GameObject:
   - component: {fileID: 6693071577773762055}
   - component: {fileID: 5376605986695954792}
   - component: {fileID: 5072093361383551775}
-  - component: {fileID: 2741620568708841417}
   m_Layer: 0
-  m_Name: Body (1)
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,16 +227,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2741620568708841417
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6074479292229061592}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

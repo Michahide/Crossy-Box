@@ -11,7 +11,7 @@ public class Car : MonoBehaviour
     private void Update() {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
-        if (this.transform.position.x < -(extent + 1) || this.transform.position.x > extent + 1){
+        if (this.transform.position.x < - (extent + 1) || this.transform.position.x > extent + 1){
             Destroy(this.gameObject);
         }
     }
