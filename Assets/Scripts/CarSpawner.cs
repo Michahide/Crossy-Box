@@ -11,11 +11,11 @@ public class CarSpawner : MonoBehaviour
 
     bool isRight;
 
-    float timer;
+    float timer = 2;
 
     private void Start() {
+        //Inisiasi awal mobilnya hadep ke kanan atau kiri
         isRight = Random.value > 0.5f ? true : false;
-        float timer = Random.Range(minSpawnDuration, maxSpawnDuration);
     }
     private void Update() {
         if (timer > 0)
@@ -25,7 +25,8 @@ public class CarSpawner : MonoBehaviour
         }
 
         timer = Random.Range(minSpawnDuration, maxSpawnDuration);
-        //kalau dia bergerak ke kanan, spawn nya di kiri, begitu sebaliknya
+        /*atur posisi spawn biar sama panjangnya kayak road(terrain), kalau dia bergerak ke kanan, 
+        spawn nya di kiri, begitu sebaliknya*/
         var spawnPos = 
             this.transform.position + Vector3.right * (isRight ? - (terrain.Extent + 1) : terrain.Extent + 1);
 

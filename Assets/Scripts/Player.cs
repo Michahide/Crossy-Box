@@ -77,4 +77,35 @@ public class Player : MonoBehaviour
     {
         return DOTween.IsTweening(transform);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //di execute sekali pada frame ketika nempel pertama kali
+        
+        /*GetComponent boros resource karena memeriksa 
+        setiap anak/objek car, sebaiknya gunakan tag*/
+
+        // var car = other.GetComponent<Car>();
+
+        if (other.tag == "Car")
+        {
+            AnimationDie();
+        }
+    }
+
+    //animasi bikin gepeng
+    private void AnimationDie(){
+        transform.DOScaleY(0.1f, 0.2f);
+        transform.DOScaleX(2, 0.2f);
+        transform.DOScaleZ(2, 0.2f);
+        this.enabled = false;
+    }
+
+    private void OnTriggerStay(Collider other) {
+        //di execute setiap frame selama masih nempel
+    }
+
+    private void OnTriggerExit(Collider other) {
+        //di execute sekali pada frame ketika tidak nempel
+    }
 }
