@@ -11,11 +11,12 @@ public class CarSpawner : MonoBehaviour
 
     bool isRight;
 
-    float timer = 2;
+    float timer;
 
     private void Start() {
         //Inisiasi awal mobilnya hadep ke kanan atau kiri
         isRight = Random.value > 0.5f ? true : false;
+        timer = Random.Range(minSpawnDuration, maxSpawnDuration);
     }
     private void Update() {
         if (timer > 0)
