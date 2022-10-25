@@ -87,17 +87,30 @@ public class Player : MonoBehaviour
 
         // var car = other.GetComponent<Car>();
 
+        // if (car != null)
+        // {
+
+        // }
+
         if (other.tag == "Car")
         {
             AnimationDie();
         }
     }
 
-    //animasi bikin gepeng
-    private void AnimationDie(){
+    //animasi ketika kena mobil
+    private void AnimationDie(/*Car car*/){
+        //buat mental
+        // var isRight = car.transform.rotation.y == 90;
+        // transform.DOMoveX(isRight ? 8 : -8, 0.2f);
+        // transform
+        //      .DORotate(Vector3.forward*180, 10f)
+        //      .SetLoops(100, LoopType.Restart);
+
+        //buat gepeng
         transform.DOScaleY(0.1f, 0.2f);
-        transform.DOScaleX(2, 0.2f);
-        transform.DOScaleZ(2, 0.2f);
+        transform.DOScaleX(1.5f, 0.2f);
+        transform.DOScaleZ(1.5f, 0.2f);
         this.enabled = false;
     }
 
