@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] Player player;
     [SerializeField] GameObject grass;
     [SerializeField] GameObject road;
     [SerializeField] int extent = 5;
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     Dictionary<int, TerrainBlock> map = new Dictionary<int, TerrainBlock>(50);
 
     private void Start() {
-        //instantiate belakang
+        //instantiate tanah di belakang
         for (int z = minZpos; z <= 0; z++)
         {
             CreateTerrain(grass,z);
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour
             //instantiate block
             CreateTerrain(prefab,z);
         }
+
+        player.Setup(minZpos, extent);
     }
 
      //method instantiate block

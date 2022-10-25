@@ -12,8 +12,11 @@ public class CoralSpawner : MonoBehaviour
     {
         List<Vector3> emptyPos = new List<Vector3>();
 
+        
         for (int x = - terrain.Extent; x <= terrain.Extent; x++)
         {
+            /*pengkondisian agar ketika coral dispawn tidak akan 
+            pernah spawn posisinya sama dengan hewan*/ 
             if(transform.position.z == 0 && x == 0)
                 continue;
             
@@ -33,23 +36,20 @@ public class CoralSpawner : MonoBehaviour
             emptyPos.RemoveAt(index);
         }
 
+        //Spawn coral di batas kiri
         Instantiate(
             coralPrefab,
             transform.position + Vector3.right * -(terrain.Extent+1),
             Quaternion.identity,
             this.transform
         );
+        
+        //Spawn coral di batas kiri
         Instantiate(
             coralPrefab,
             transform.position + Vector3.right * (terrain.Extent + 1),
             Quaternion.identity,
             this.transform
         );
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

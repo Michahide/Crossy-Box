@@ -9,6 +9,17 @@ public class Player : MonoBehaviour
     [SerializeField, Range(0.01f, 1f)] float moveDuration =0.2f;
 
     [SerializeField, Range(0.01f, 1f)] float jumpHeight =0.5f;
+
+    private float backBoundary;
+    private float leftBoundary;
+    private float rightBoundary;
+
+    public void Setup(int minZpos, int extent){
+        backBoundary = minZpos - 1;
+        leftBoundary = -(extent);
+        rightBoundary = extent;
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -25,30 +36,30 @@ public class Player : MonoBehaviour
         // }
 
         //buat kontrol pencet panah atas, dll
-        var moveDir = Vector2.zero;
+        var moveDir = Vector3.zero;
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            moveDir += new Vector2(0,1);
+            moveDir += new Vector3(0, 0,1);
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            moveDir += new Vector2(0,-1);
+            moveDir += new Vector3(0, 0,-1);
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            moveDir += new Vector2(1,0);
+            moveDir += new Vector3(1,0, 0);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            moveDir += new Vector2(-1,0);
+            moveDir += new Vector3(-1, 0, 0);
         }
 
         /*dua if di bawah berguna agar karakter tidak dapat 
         move sebelum sampai di tempat*/
-        if (moveDir == Vector2.zero)
+        if (moveDir == Vector3.zero)
             return;
 
         if(isJumping() == false)
@@ -56,19 +67,30 @@ public class Player : MonoBehaviour
 
     }
 
-    private void Jump(Vector2 dir){
-        var targetDirection = new Vector3( x: dir.x, y: 0, z: dir.y );
-        var targetPosition = transform.position + targetDirection; 
+    private void Jump(Vector3 targetDirection){
+        var targetPosition = transform.position + targetDirection;
+
+        /*Bikin gerakan langsung ngubah arah lihat hewan,
+        misal maju ke depan lihat ke depan, gerak ke kanan, liht ke kanan*/
+        transform.LookAt(targetPosition); 
         
-        //Bikin sequence untuk animasi
+        //Bikin sequence untuk animasi loncat ke atas
         var moveSeq = DOTween.Sequence(transform);
         moveSeq.Append(transform.DOMoveY(jumpHeight,moveDuration/2));
         moveSeq.Append(transform.DOMoveY(0,moveDuration/2));
 
+        if( targetPosition.z <= backBoundary ||
+            targetPosition.x <= leftBoundary ||
+            targetPosition.x >= rightBoundary    
+        )
+            return;
+
+        if(Coral.AllPositions.Contains(targetPosition))
+            return;
         // transform.DOMoveY(2f,0.2f)
         //     .OnComplete(()=>transform.DOMoveY(0,0.2f));
         
-
+        //gerak maju/mundur/samping
         transform.DOMoveX(targetPosition.x,moveDuration/2);
         transform.DOMoveZ(targetPosition.z,moveDuration/2);
     }
@@ -109,8 +131,8 @@ public class Player : MonoBehaviour
 
         //buat gepeng
         transform.DOScaleY(0.1f, 0.2f);
-        transform.DOScaleX(1.5f, 0.2f);
-        transform.DOScaleZ(1.5f, 0.2f);
+        transform.DOScaleX(1, 0.2f);
+        transform.DOScaleZ(1, 0.2f);
         this.enabled = false;
     }
 
