@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
 
         if(isUniform){
-            if(tbRef is Grass)
+            if(tbRef is Sand)
                 return road;
             else
                 return grass;

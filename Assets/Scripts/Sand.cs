@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //inheritance ke TerrainBlock
-public class Grass : TerrainBlock
+public class Sand : TerrainBlock
 {
 
 }

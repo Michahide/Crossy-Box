@@ -81,12 +81,13 @@ public class Player : MonoBehaviour
 
         if( targetPosition.z <= backBoundary ||
             targetPosition.x <= leftBoundary ||
-            targetPosition.x >= rightBoundary    
+            targetPosition.x >= rightBoundary||
+            Coral.AllPositions.Contains(targetPosition)    
         )
             return;
 
-        if(Coral.AllPositions.Contains(targetPosition))
-            return;
+        // if(  )
+        //     return;
         // transform.DOMoveY(2f,0.2f)
         //     .OnComplete(()=>transform.DOMoveY(0,0.2f));
         
